@@ -1,0 +1,130 @@
+---
+title: Getting Started with KEKPOOL
+description: Quickly set up your mining operation with KEKPOOL by creating an account and connecting your miner in just a few steps.
+---
+
+## Prerequisites
+
+Before starting, ensure you have the following ready:
+
+<Callout kind="info">
+
+- A Kaspa wallet to receive payouts (e.g., create one via the official Kaspa wallet)
+- Mining hardware: GPU with at least 6GB VRAM or Kaspa ASIC miner
+- Stable internet connection with low latency `<50ms` to the pool server
+- Operating system: Windows, Linux, or macOS
+
+</Callout>
+
+KEKPOOL supports Kaspa (`KAS`) mining via the kHeavyHash algorithm. Payouts occur daily with fees as low as `0.9%`. Your hashrate contributes to the pool's total, and you earn proportional rewards.
+
+## Create Your KEKPOOL Account
+
+Sign up to access the dashboard for real-time monitoring of your hashrate, earnings, and active workers.
+
+<Steps>
+  <Step title="Visit Registration Page" icon="user-plus">
+    Go to [https://kekpool.com/register](https://kekpool.com/register).
+    
+    Fill in your email, username, and password. Agree to terms.
+  </Step>
+  
+  <Step title="Verify Email" icon="mail">
+    Check your inbox for the verification email from KEKPOOL.
+    
+    Click the link to activate your account. This enables payouts and dashboard access.
+  </Step>
+  
+  <Step title="Log In and Get Wallet Address" icon="log-in">
+    Log in at [https://kekpool.com/login](https://kekpool.com/login).
+    
+    Navigate to the Wallet tab and add your Kaspa payout address (format: `kaspa:qrq...`).
+  </Step>
+</Steps>
+
+## Download and Install Mining Software
+
+KEKPOOL recommends GPU miners like lolMiner or BzMiner for Kaspa. Download the latest release from their official GitHub repositories.
+
+<Tabs>
+  <Tab title="lolMiner (Linux/Windows)" icon="download">
+    Download from [GitHub](https://github.com/Lolliedieb/lolMiner-releases/releases).
+    
+    Extract the archive and make it executable on Linux:
+    
+    ````bash
+    chmod +x lolMiner_v1.XX_linux.tar.gz
+    tar -xzf lolMiner_v1.XX_linux.tar.gz
+    cd 1.0/lolMiner
+    ````
+  </Tab>
+  
+  <Tab title="BzMiner (Multi-OS)" icon="package">
+    Download from [GitHub](https://github.com/doktor83/bzMiner/releases).
+    
+    Extract and prepare:
+    
+    ````bash
+    unzip bzMiner-windows-portable.zip
+    cd bzMiner
+    ````
+  </Tab>
+</Tabs>
+
+## Connect Your Miner to KEKPOOL
+
+Configure your miner to point to the KEKPOOL stratum server. Use your KEKPOOL username as the worker name (e.g., `yourusername.rig1`).
+
+Replace `YOUR_WALLET` with your Kaspa address and `YOUR_USERNAME` with your pool username.
+
+<CodeGroup tabs="lolMiner,BzMiner" show-lines="true">
+  ````bash
+  ./lolMiner --algo KASPA --pool stratum+tcp://kekpool.com:8443 --user YOUR_USERNAME.YOUR_RIG --pass x
+  ````
+  
+  ````bash
+  bzminer -a kheavyhash -o stratum+tcp://kekpool.com:8443 -u YOUR_USERNAME.YOUR_RIG -p x
+  ````
+</CodeGroup>
+
+<Callout kind="tip">
+
+Monitor the console output for `Connected to kekpool.com` and your hashrate (e.g., `15.2 GH/s`). Allow `5-10` minutes for shares to register on the dashboard.
+
+</Callout>
+
+## Verify Connection and Monitor
+
+1. Log in to [https://dashboard.kekpool.com](https://dashboard.kekpool.com).
+2. Check Workers tab: Your rig should show `Online` status and hashrate.
+3. View Pool stats: Track global hashrate and your share.
+
+If no shares appear, verify firewall settings and stratum URL.
+
+## Next Steps
+
+<Columns cols={3}>
+  <Card title="Monitor Dashboard" icon="activity" href="https://dashboard.kekpool.com">
+    Track real-time hashrate, earnings, and payouts.
+  </Card>
+  
+  <Card title="Profit Calculator" icon="calculator" href="https://kekpool.com/calculator">
+    Estimate daily rewards based on your hashrate.
+  </Card>
+  
+  <Card title="Join Community" icon="users" href="https://discord.gg/kekpool" target="_blank">
+    Get support and optimization tips.
+  </Card>
+</Columns>
+
+<Expandable title="Troubleshooting Common Issues" default-open="false">
+  
+| Issue | Solution |
+|-------|----------|
+| No connection | Check stratum URL: `stratum+tcp://kekpool.com:8443`. Ping server. |
+| Low hashrate | Update drivers (AMD: ROCm, NVIDIA: CUDA 12+). |
+| Invalid shares | Ensure `kHeavyHash` algo and correct wallet format. |
+
+</Expandable>
+
+Congratulations! Your miner now contributes to KEKPOOL's AI-optimized pool. Optimize further by overclocking and monitoring efficiency.

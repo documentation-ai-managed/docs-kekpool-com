@@ -1,0 +1,155 @@
+---
+title: KEKPOOL Changelog
+description: Track the latest updates, improvements, and new features released for KEKPOOL to stay informed on platform enhancements.
+---
+
+## Recent Updates
+
+Stay current with KEKPOOL's evolution. You receive instant notifications for major releases through the dashboard. Review the highlights below to understand new capabilities, especially AI-driven optimizations that boost your mining efficiency.
+
+<Callout kind="info">
+  Check the [KEKPOOL Dashboard](https://dashboard.kekpool.com) for personalized update logs tied to your account.
+</Callout>
+
+<Update label="2024-10-15" description="v1.3.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Introduced **AI Hashrate Optimizer**: Automatically adjusts mining parameters based on real-time network difficulty and your rig's performance. Enable it in dashboard settings to increase KAS yields by up to 15%.
+- Added **Multi-Coin Support**: Now mine Kaspa (KAS), Ergo (ERG), and Ravencoin (RVN) from a single pool with seamless switching.
+
+## Improvements
+
+- Enhanced real-time hashrate tracking with sub-second updates.
+- Dashboard now supports dark mode for better visibility during long monitoring sessions.
+
+````javascript
+// Example: Enable AI Optimizer via API
+fetch('https://api.kekpool.com/v1/miner/optimize', {
+  method: 'POST',
+  headers: { 'Authorization': 'Bearer YOUR_API_KEY' },
+  body: JSON.stringify({ enableAI: true, coin: 'KAS' })
+});
+````
+
+</Update>
+
+<Update label="2024-09-20" description="v1.2.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- **Profit Calculator v2**: Integrates live KAS price feeds and electricity cost inputs for precise daily profit estimates.
+- Instant daily payouts now available for balances `{>0.1}` KAS, reducing withdrawal thresholds.
+
+## Bug Fixes
+
+- Fixed stale hashrate reporting for GPU rigs during high network congestion.
+- Resolved payout delay issues affecting solo miners.
+
+<Columns cols={2}>
+
+<Card title="Update Your Miner" icon="settings" href="/quickstart">
+
+Run these commands to connect with new stratum endpoints.
+
+</Card>
+
+<Card title="API Changes" icon="code" href="/authentication">
+
+Review updated endpoints for v1.2+ compatibility.
+
+</Card>
+
+</Columns>
+
+</Update>
+
+<Update label="2024-08-10" description="v1.1.0" tags={["bugfix", "improvement"]}>
+
+## Improvements
+
+- Optimized pool server latency by 20ms, improving share submission success rates.
+- Community dashboard now shows top 100 miners' hashrates anonymously.
+
+## Bug Fixes
+
+- Corrected fee calculation display for low-volume miners.
+- Patched vulnerability in legacy stratum protocol handling.
+
+````bash
+# Update miner config for improved stability
+stratum+tcp://kekpool.com:3333 -u YOUR_WALLET_ADDRESS -p x
+````
+
+</Update>
+
+## How to Upgrade
+
+Follow these steps to ensure your mining setup uses the latest features.
+
+<Steps>
+
+<Step title="Check Compatibility" icon="check-circle">
+
+Verify your miner software supports the new stratum ports.
+
+</Step>
+
+<Step title="Update Stratum URL" icon="download">
+
+<CodeGroup tabs="HiveOS,Windows,BeeTech">
+
+````bash
+# HiveOS
+kekpool -stratum kekpool.com:3333 -user YOUR_WALLET.worker
+````
+
+````bat
+:: Windows (lolMiner)
+lolMiner.exe --algo kheavyhash --pool kekpool.com:3333 --user YOUR_WALLET.rig1
+````
+
+````bash
+# BeeTech
+kekpool stratum+tcp://kekpool.com:3333 -u YOUR_WALLET -p worker
+````
+
+</CodeGroup>
+
+</Step>
+
+<Step title="Enable AI Features" icon="zap">
+
+Log in to https://dashboard.kekpool.com, navigate to Settings `{>` Optimization `}`, and toggle AI mode.
+
+</Step>
+
+</Steps>
+
+<Callout kind="tip">
+  Join the KEKPOOL Discord for beta access to upcoming v1.4.0 features like auto-failover pools.
+</Callout>
+
+## Quick Links
+
+<Columns cols={3}>
+
+<Card title="Quickstart" icon="rocket" href="/quickstart">
+
+Get mining in 5 minutes.
+
+</Card>
+
+<Card title="Dashboard Guide" icon="monitor" href="/dashboard">
+
+Master real-time monitoring.
+
+</Card>
+
+<Card title="API Reference" icon="code" href="/authentication">
+
+Integrate programmatically.
+
+</Card>
+
+</Columns>

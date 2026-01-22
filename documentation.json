@@ -1,0 +1,120 @@
+{
+  "name": "kekpool.com",
+  "initialRoute": "introduction",
+  "colors": {
+    "light": {
+      "brand": "#0c0c14"
+    },
+    "dark": {
+      "brand": "#49494f"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "icon": "book",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "icon": "rocket",
+            "pages": [
+              {
+                "title": "Introduction",
+                "path": "introduction",
+                "icon": "star"
+              },
+              {
+                "title": "Quickstart",
+                "path": "quickstart",
+                "icon": "zap"
+              }
+            ]
+          },
+          {
+            "group": "Core Concepts",
+            "icon": "compass",
+            "pages": [
+              {
+                "title": "Features",
+                "path": "features",
+                "icon": "lightbulb"
+              },
+              {
+                "title": "Configuration",
+                "path": "configuration",
+                "icon": "settings"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "icon": "code",
+        "groups": [
+          {
+            "group": "Endpoints",
+            "icon": "terminal",
+            "openapi": "openapi.yaml"
+          }
+        ]
+      },
+      {
+        "tab": "Help Center",
+        "icon": "help-circle",
+        "pages": [
+          {
+            "title": "Help Center",
+            "path": "help-center",
+            "icon": "home"
+          },
+          {
+            "group": "FAQs",
+            "icon": "help-circle",
+            "expandable": false,
+            "pages": [
+              {
+                "title": "How to Join KEKPOOL",
+                "path": "help-center/faq/how-to-join-kekpool"
+              }
+            ]
+          },
+          {
+            "group": "Troubleshooting",
+            "icon": "alert-circle",
+            "expandable": false,
+            "pages": [
+              {
+                "title": "Miner Not Showing Up",
+                "path": "help-center/troubleshooting/miner-not-showing-up"
+              }
+            ]
+          },
+          {
+            "group": "Guides",
+            "icon": "book-open",
+            "expandable": false,
+            "pages": [
+              {
+                "title": "Start Mining Kaspa",
+                "path": "help-center/guides/start-mining-kaspa"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "icon": "clock",
+        "pages": [
+          {
+            "title": "Release History",
+            "path": "changelog",
+            "icon": "history"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,171 @@
+---
+title: Configuring Your KEKPOOL Miner
+description: Learn how to fine-tune your mining setup for optimal performance using KEKPOOL's AI tools and custom configurations.
+---
+
+## Overview
+
+Configure your KEKPOOL miner to leverage AI-powered optimizations for maximum Kaspa (`KAS`) hashrate and efficiency. You set environment variables, integrate AI parameters, and manage workers for single or multiple rigs. These settings ensure low-latency connections to `stratum.kekpool.com` and instant payouts.
+
+<Callout kind="info">
+  Before configuring, ensure your mining software supports Kaspa. Recommended: lolMiner, SRBMiner, or TeamRedMiner. Install Node.js for AI dashboard integration.
+</Callout>
+
+## Prerequisites
+
+Verify your setup meets these requirements:
+
+| Requirement | Details |
+|-------------|---------|
+| OS | Linux, Windows, or macOS |
+| GPU | NVIDIA/AMD with CUDA/ROCm support |
+| Software | Latest miner version |
+| Network | Stable connection, open ports 3333, 4444 |
+| Wallet | Valid Kaspa address (e.g., `kaspa:your-wallet-address`) |
+
+## Basic Configuration Steps
+
+Follow these steps to configure your miner.
+
+<Steps>
+  <Step title="Set Pool URL" icon="globe">
+    Define the KEKPOOL stratum server. Use `stratum+tcp://stratum.kekpool.com:3333` for mainnet.
+
+````bash
+export POOL=stratum+tcp://stratum.kekpool.com:3333
+````
+  </Step>
+
+  <Step title="Add Wallet and Worker" icon="wallet">
+    Replace `YOUR_KASPA_WALLET` with your address and add a worker name.
+
+````bash
+export WALLET=YOUR_KASPA_WALLET.Miner1
+````
+  </Step>
+
+  <Step title="Enable AI Optimization" icon="zap">
+    Activate KEKPOOL's AI features for dynamic intensity adjustment.
+
+````bash
+export AI_OPTIMIZE=true
+export AI_INTENSITY=high
+````
+  </Step>
+
+  <Step title="Launch Miner" icon="play">
+    Start with your preferred software.
+
+    <CodeGroup tabs="lolMiner,SRBMiner">
+````bash
+lolMiner --algo KASPA --pool $POOL --user $WALLET --apiport 4028 $AI_OPTIMIZE
+````
+````bash
+SRBMiner-MULTI --algorithm kheavyhash --pool $POOL --wallet $WALLET --cpu-threads 4 $AI_INTENSITY
+````
+    </CodeGroup>
+  </Step>
+</Steps>
+
+## Miner-Specific Configurations
+
+Choose your mining software and apply tailored settings.
+
+<Tabs>
+  <Tab title="lolMiner" icon="code">
+    Optimize for NVIDIA GPUs with AI throttling.
+
+````bash
+lolMiner.exe --algo KASPA --pool stratum.kekpool.com:3333 --user kaspa:YOUR_WALLET.Rig1 --watchdog 1m --apiport 4028 --AI-OPTIMIZE --intensity high
+````
+
+    <Callout kind="tip">
+      Monitor via `http://localhost:4028` for real-time hashrate.
+    </Callout>
+  </Tab>
+
+  <Tab title="TeamRedMiner" icon="code">
+    Ideal for AMD rigs; enables power efficiency.
+
+````bash
+teamredminer.exe -a kheavyhash -o stratum.kekpool.com:3333 -u YOUR_WALLET.Worker1 -p x --pl 75 --watchdog --api-bind 0.0.0.0:4028 --ai-efficiency
+````
+  </Tab>
+
+  <Tab title="SRBMiner" icon="code">
+    Supports multi-coin switching with AI.
+
+````bash
+SRBMiner-MULTI.exe --algorithm kheavyhash --pool stratum.kekpool.com:3333 --wallet YOUR_WALLET.Rig2 --gpu-id 0,1 --intensity 24 --api-port 21532
+````
+  </Tab>
+</Tabs>
+
+## AI Optimization Parameters
+
+Integrate KEKPOOL's AI tools to auto-adjust based on pool hashrate.
+
+<Columns cols={2}>
+  <Card title="Dynamic Intensity" icon="zap" href="#ai-intensity">
+    Adjusts core clock dynamically (`AI_INTENSITY=auto` or `high`).
+  </Card>
+
+  <Card title="Power Management" icon="battery">
+    Optimizes wattage for profit (`AI_POWER=balanced`).
+  </Card>
+
+  <Card title="Hashrate Boost" icon="trending-up" href="#boost">
+    Enables overclock presets.
+  </Card>
+
+  <Card title="Fault Tolerance" icon="shield">
+    Auto-restarts on errors.
+  </Card>
+</Columns>
+
+Use these in your config:
+
+```bash
+# AI Parameters
+AI_OPTIMIZE=true
+AI_INTENSITY=high
+AI_POWER=balanced
+AI_BOOST=enabled
+```
+
+## Managing Multiple Rigs
+
+Scale to multiple machines with unique worker names.
+
+<Expandable title="Advanced Multi-Rig Setup" default-open="false">
+  Assign workers like `YOUR_WALLET.RigLondon`, `YOUR_WALLET.RigNYC`. Track via the KEKPOOL dashboard at `https://dashboard.kekpool.com/workers`.
+
+  Example for Rig 2:
+
+````bash
+export WALLET=YOUR_KASPA_WALLET.Rig2
+lolMiner --algo KASPA --pool stratum.kekpool.com:4444 --user $WALLET --AI-OPTIMIZE
+````
+
+  View aggregated stats: `https://api.kekpool.com/stats?wallet=YOUR_WALLET`.
+</Expandable>
+
+## Troubleshooting Common Issues
+
+<ExpandableGroup>
+  <Expandable title="Low Hashrate" default-open="true">
+    Check GPU drivers, temperature (`<80°C`), and firewall. Restart with `--no-watchdog`.
+  </Expandable>
+
+  <Expandable title="Connection Failures">
+    Verify pool port and DNS. Test: `nc -zv stratum.kekpool.com 3333`.
+  </Expandable>
+
+  <Expandable title="No Payouts">
+    Ensure wallet matches exactly. Minimum: 0.1 `KAS`. Check `https://explorer.kekpool.com`.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="success">
+  Your configuration is now optimized. Monitor performance at `https://dashboard.kekpool.com` and join the KEKPOOL Discord for support.
+</Callout>
