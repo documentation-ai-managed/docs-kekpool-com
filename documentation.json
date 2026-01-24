@@ -48,6 +48,14 @@
         "icon": "help-circle",
         "pages": [
           {
+            "title": "Privacy policy",
+            "path": "privacy-policy"
+          },
+          {
+            "title": "Terms and Contidions",
+            "path": "terms-and-contidions"
+          },
+          {
             "title": "Help Center",
             "path": "help-center",
             "icon": "home"
