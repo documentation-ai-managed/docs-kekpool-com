@@ -1,4 +1,28 @@
 ---
 title: How to set withdrawal wallet
 ---
+# No-KYC user.
 
+If you start mining as a **no-KYC user** (without registering), your **wallet address** is taken from the username configured on your ASIC miner.
+
+For example, if your miner is configured as:
+
+`kaspa:q3oyic2ce4ok9e3vhjj3cm48emzxr1plmpfrtq5lmir9tq4ef1e7ptrbmka0j.worker1`
+
+we will use:
+
+`kaspa:q3oyic2ce4ok9e3vhjj3cm48emzxr1plmpfrtq5lmir9tq4ef1e7ptrbmka0j`
+
+as your withdrawal wallet. This wallet address **cannot be changed** on kekpool.com.
+
+For any **merge-mined coins**, you must specify your withdrawal wallet in the miner's **password** field (which is normally set to `x`).
+
+For example, to receive ZKS payouts, set the password field to:
+
+`zkas=zkas:434fjdnfkasfkdsfdjffdf`
+
+In this case, we will use:
+
+`zkas:434fjdnfkasfkdsfdjffdf`
+
+as your withdrawal wallet for ZKS payouts.
