@@ -20,6 +20,10 @@
             "icon": "rocket",
             "pages": [
               {
+                "title": "set-withdrawal-wallet",
+                "path": "set-withdrawal-wallet"
+              },
+              {
                 "title": "Introduction",
                 "path": "introduction",
                 "icon": "star"
